@@ -1,6 +1,9 @@
-NAME = megaphone
+NAME = Violence
 
-SRCS = megaphone.cpp
+SRCS = HumanA.cpp \
+		HumanB.cpp \
+		main.cpp \
+		Weapon.cpp \
 
 CFLAGS = -Wall -Wextra -Werror -std=c++98
 

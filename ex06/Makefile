@@ -1,6 +1,7 @@
-NAME = megaphone
+NAME = HarlFilter
 
-SRCS = megaphone.cpp
+SRCS = Harl.cpp \
+		main.cpp \
 
 CFLAGS = -Wall -Wextra -Werror -std=c++98
 

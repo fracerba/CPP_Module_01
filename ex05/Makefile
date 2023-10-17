@@ -1,6 +1,7 @@
-NAME = megaphone
+NAME = Harl
 
-SRCS = megaphone.cpp
+SRCS = Harl.cpp \
+		main.cpp \
 
 CFLAGS = -Wall -Wextra -Werror -std=c++98
 

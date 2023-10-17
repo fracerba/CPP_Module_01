@@ -1,6 +1,6 @@
-NAME = megaphone
+NAME = Replace
 
-SRCS = megaphone.cpp
+SRCS = main.cpp
 
 CFLAGS = -Wall -Wextra -Werror -std=c++98
 
