@@ -24,14 +24,6 @@ int main(int argc, char **argv)
         infile.close();
         return (1);
     }
-    if (!getline(infile, s3))
-    {
-        s3.clear();
-        std::cout<<"The file is empty!\n";
-        infile.close();
-        return (1);
-    }
-    s3.clear();
     s3 = (std::string)argv[1] + ".replace";
     std::ofstream outfile(s3.c_str());
     s3.clear();
