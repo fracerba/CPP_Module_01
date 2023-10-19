@@ -14,47 +14,56 @@ int main(int argc, char **argv)
         return(1);
     }
     unsigned long i = 0;
+    unsigned long j = 0;
     std::string s1 = argv[2];
-    std::string s2 = argv[3];
+    std::string s2;
     std::string s3;
     std::ifstream infile(argv[1]);
-    if (!infile.good())
+    if (!infile.good() || !s1.length())
     {
-        std::cout<<"File not found\n";
+        if (!infile.good())
+            std::cout<<"File not found!\n";
+        else if (!s1.length())
+            std::cout<<"The first string can't be empty!\n";
         infile.close();
         return (1);
     }
-    s3 = (std::string)argv[1] + ".replace";
-    std::ofstream outfile(s3.c_str());
-    s3.clear();
-    if (!((std::string)argv[1]).length())
+    getline(infile, s3);
+    if (!s3.length())
     {
-        std::cout<<"The first string can't be empty!\n";
+        s3.clear();
+        std::cout<<"The file is empty!\n";
+        infile.close();
         return (1);
     }
+    s2 = ((std::string)argv[1] + ".replace");
+    std::ofstream outfile(s2.c_str());
+    s2.clear();
+    s2 = argv[3];
     if (!outfile.is_open())
     {
         std::cout<<"Failed to create "<<(std::string)argv[1]<<".replace\n";
         infile.close();
         return (1);
     }
-    while (getline(infile, s3))
-    {
+    do{
         i = 0;
         while (i < s3.length())
         {
-            if (s3.substr(i, s1.length()) == s1)
+            j = s3.find(s1, i);
+            if (j < s3.length())
             {
+                outfile << s3.substr(i, (j - i));
                 outfile << s2;
-                i += s1.length() - 1;
+                j += s1.length();
             }
             else
-                outfile << s3.substr(i, 1);
-            i++;
+                outfile << s3.substr(i, (s3.length() - i));
+            i = j;
         }
         outfile << std::endl;
         s3.clear();
-    }
+    }while (getline(infile, s3));
     infile.close();
     outfile.close();
     return (0);
